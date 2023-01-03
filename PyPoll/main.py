@@ -38,15 +38,19 @@ diana_count = len(diana)
 raymon_percentage = round((len(raymon) / total) * 100, 3)
 raymon_count = len(raymon)
 
+winner_list = []
+
 def winner(lists):
     if charles_count > diana_count and raymon_count:
-        print("Winner: Charles Casper Stockham")
+        winner_list.append("Winner: Charles Casper Stockham")
 
     if diana_count > charles_count and raymon_count:
-        print("Winner: Diana DeGette")
+        winner_list.append("Winner: Diana DeGette")
 
     if raymon_count > charles_count and diana_count:
-        print("Winner: Raymon Anthony Doane")
+        winner_list.append("Winner: Raymon Anthony Doane")
+
+winner([charles, diana, raymon])
 
 print()
 print("Election Results")
@@ -65,6 +69,28 @@ print(f"Raymon Anthony Doane: {raymon_percentage}% ({raymon_count})")
 print()
 print("------------------------------")
 print()
-winner([charles, diana, raymon])
+print(winner_list[0])
 print()
 print("------------------------------")
+
+# Create a path for a text file called "analysis."
+analysispath = os.path.join("Analysis", "analysis.txt")
+
+# Create a list of lines that are going to be written into the "analysis" text file ("" = empty line).
+lines = ["Election Results", "", "------------------------------", "", "Total Votes: " + str(total), "", "------------------------------", "", 
+        "Charles Casper Stockham: " + str(charles_percentage) + "% (" + str(charles_count) + ")", "", 
+        "Diana DeGette: " + str(diana_percentage) + "% (" + str(diana_count) + ")", "", 
+        "Raymon Anthony Doane: " + str(raymon_percentage) + "% (" + str(raymon_count) + ")", "", 
+        "------------------------------", "", winner_list[0], "", "------------------------------"]
+
+# Open "analysis.txt" to write into it.
+with open(analysispath, 'w') as txtfile:
+
+    # Loop throught the "lines" list.
+    for line in lines:
+
+        # Write the line.
+        txtfile.write(line)
+
+        # Move down to the next line in the text file.
+        txtfile.write("\n")

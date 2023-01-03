@@ -51,7 +51,12 @@ print(f"Greatest Decrease in Profits: ")
 analysispath = os.path.join("Analysis", "analysis.txt")
 
 # Create a list of lines that are going to be written into the "analysis" text file ("" = empty line).
-lines = ["Financial Analysis", "", "-----------------------------", "", "Total Months: " + str(len(months)), "", "Total: $" + str(sum(profit_losses)), "", "Average Change: $", "", "Greatest Increase in Profits: ", "", "Greatest Decrease in Profits: "]
+lines = ["Financial Analysis", "", "-----------------------------", "", 
+        "Total Months: " + str(len(months)), "", 
+        "Total: $" + str(sum(profit_losses)), "", 
+        "Average Change: $", "", 
+        "Greatest Increase in Profits: ", "", 
+        "Greatest Decrease in Profits: "]
 
 # Open "analysis.txt" to write into it.
 with open(analysispath, 'w') as txtfile:
